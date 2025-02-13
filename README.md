@@ -10,3 +10,5 @@
 | bq-duckdb | [![Maven Central Version](https://img.shields.io/maven-central/v/io.github.bitquant-initiative/bq-duckdb?color=blue)](https://central.sonatype.com/artifact/io.github.bitquant-initiative/bq-duckdb)  |
 | bq-ducktape | [![Maven Central Version](https://img.shields.io/maven-central/v/io.github.bitquant-initiative/bq-ducktape?color=blue)](https://central.sonatype.com/artifact/io.github.bitquant-initiative/bq-ducktape)  |
 | bq-indicators | [![Maven Central Version](https://img.shields.io/maven-central/v/io.github.bitquant-initiative/bq-indicators?color=blue)](https://central.sonatype.com/artifact/io.github.bitquant-initiative/bq-indicators)  |
+| bq-loader | [![Maven Central Version](https://img.shields.io/maven-central/v/io.github.bitquant-initiative/bq-loader?color=blue)](https://central.sonatype.com/artifact/io.github.bitquant-initiative/bq-loader)  |
+| bq-sheets | [![Maven Central Version](https://img.shields.io/maven-central/v/io.github.bitquant-initiative/bq-sheets?color=blue)](https://central.sonatype.com/artifact/io.github.bitquant-initiative/bq-sheets)  |
