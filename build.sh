@@ -4,7 +4,9 @@ set -e
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
-cd ${SCRIPT_DIR}/bq-util && mvn clean install
-cd ${SCRIPT_DIR}/bq-ta4j && mvn clean install
-cd ${SCRIPT_DIR}/bq-duckdb && mvn clean install
-cd ${SCRIPT_DIR}/bq-ducktape && mvn clean install
+
+if [[ "${CI}" = "true" ]]; then
+    GPG_SKIP_OPT="-Dgpg.skip"
+fi
+
+./mvnw clean install ${GPG_SKIP_OPT}
