@@ -18,11 +18,10 @@
         <module>bq-duckdb</module>
         <module>bq-ducktape</module>
         <module>bq-indicators</module>
-        <!--
         <module>bq-sheets</module>
         <module>bq-loader</module>
         <module>bq-strategy-engine</module>
-        -->
+
     </modules>
 
     <build>

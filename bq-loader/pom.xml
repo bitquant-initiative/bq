@@ -6,11 +6,10 @@
 
   <groupId>io.github.bitquant-initiative</groupId>
   <artifactId>bq-loader</artifactId>
-  <version>0.2.2</version>
 
   <name>bq-loader</name>
-  <!-- FIXME change it to the project's website -->
-  <url>https://github.com/bitquant-initiative/bq-loader</url>
+
+  <url>https://github.com/bitquant-initiative/bq</url>
   <description>BQ Data Loader</description>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -18,17 +17,23 @@
     <maven.compiler.source>21</maven.compiler.source>
   </properties>
 
+  <parent>
+    <groupId>io.github.bitquant-initiative</groupId>
+    <artifactId>bq-parent-pom</artifactId>
+    <version>${revision}</version>
+    <relativePath>../bq-parent-pom/pom.xml</relativePath>
+  </parent>
 
   <licenses>
     <license>
       <name>MIT License</name>
-      <url>https://github.com/bitquant-initiative/bq-loader/LICENSE</url>
+      <url>https://github.com/bitquant-initiative/bq/LICENSE</url>
       <distribution>repo</distribution>
     </license>
   </licenses>
 
   <scm>
-    <url>https://github.com/bitquant-initiative/bq-loader</url>
+    <url>https://github.com/bitquant-initiative/bq</url>
   </scm>
 
   <developers>
