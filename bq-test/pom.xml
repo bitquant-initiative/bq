@@ -197,7 +197,6 @@
           <autoPublish>true</autoPublish>
           <deploymentName>bq-util</deploymentName>
           <publishingServerId>central</publishingServerId>
-          <tokenAuth>true</tokenAuth>
 
         </configuration>
       </plugin>
