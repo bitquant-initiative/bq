@@ -11,4 +11,4 @@ if [[ "${CI}" = "true" ]]; then
     MAVEN_OPTS="${GPG_SKIP_OPT} -B ${MAVEN_OPTS}"
 fi
 
-echo ./mvnw clean install ${MAVEN_OPTS}
+./mvnw clean install ${MAVEN_OPTS}
