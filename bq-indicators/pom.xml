@@ -54,63 +54,15 @@
     </dependency>
 
 
-    <dependency>
-      <groupId>com.google.flogger</groupId>
-      <artifactId>flogger-slf4j-backend</artifactId>
-      <version>0.8</version>
-      <scope>provided</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>ch.qos.logback</groupId>
-      <artifactId>logback-classic</artifactId>
-      <version>1.5.16</version>
-      <scope>runtime</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-api</artifactId>
-      <scope>test</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-params</artifactId>
-      <scope>test</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>org.assertj</groupId>
-      <artifactId>assertj-core</artifactId>
-      <version>3.27.3</version>
-      <scope>test</scope>
-    </dependency>
-
-
   </dependencies>
 
   <build>
     <plugins>
 
 
-
-
-
     </plugins>
-   
+
   </build>
 
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>org.junit</groupId>
-        <artifactId>junit-bom</artifactId>
-        <version>5.11.4</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
 
 </project>

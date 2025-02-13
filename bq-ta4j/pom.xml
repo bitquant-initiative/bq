@@ -5,8 +5,6 @@
   <modelVersion>4.0.0</modelVersion>
 
 
-
-
   <groupId>io.github.bitquant-initiative</groupId>
   <artifactId>bq-ta4j</artifactId>
   <name>bq-ta4j</name>
@@ -22,7 +20,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.release>21</maven.compiler.release>
     <maven.compiler.source>21</maven.compiler.source>
-   
+
   </properties>
 
 
@@ -61,29 +59,15 @@
     </dependency>
 
 
-
-
-
-
-
-
-
   </dependencies>
 
   <build>
     <plugins>
 
 
-  
-
-     
-   
-
-
     </plugins>
-   
-  </build>
 
+  </build>
 
 
 </project>

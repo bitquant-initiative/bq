@@ -12,12 +12,12 @@
 	<description>DuckDB Support for TA4J</description>
 
 
-  <parent>
-    <groupId>io.github.bitquant-initiative</groupId>
-    <artifactId>bq-parent-pom</artifactId>
-    <version>${revision}</version>
-    <relativePath>../bq-parent-pom/pom.xml</relativePath>
-  </parent>
+	<parent>
+		<groupId>io.github.bitquant-initiative</groupId>
+		<artifactId>bq-parent-pom</artifactId>
+		<version>${revision}</version>
+		<relativePath>../bq-parent-pom/pom.xml</relativePath>
+	</parent>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.release>21</maven.compiler.release>
@@ -61,46 +61,12 @@
 
 
 		<dependency>
-			<groupId>com.google.flogger</groupId>
-			<artifactId>flogger-slf4j-backend</artifactId>
-			<version>0.8</version>
-			<scope>provided</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-classic</artifactId>
-			<version>1.5.16</version>
-			<scope>runtime</scope>
-		</dependency>
-
-
-		<dependency>
 			<groupId>io.github.classgraph</groupId>
 			<artifactId>classgraph</artifactId>
 			<version>4.8.179</version>
 		</dependency>
 
 
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-api</artifactId>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-params</artifactId>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.assertj</groupId>
-			<artifactId>assertj-core</artifactId>
-			<version>3.27.3</version>
-			<scope>test</scope>
-		</dependency>
-		
 		<dependency>
 			<groupId>io.github.bitquant-initiative</groupId>
 			<artifactId>bq-test</artifactId>
@@ -117,16 +83,5 @@
 
 	</build>
 
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.junit</groupId>
-				<artifactId>junit-bom</artifactId>
-				<version>5.11.4</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
 
 </project>
