@@ -6,11 +6,73 @@
     <artifactId>bq-parent-pom</artifactId>
     <version>${revision}</version>
     <packaging>pom</packaging>
+
+
     <properties>
         <revision>0.3.0</revision>
     </properties>
-  <build>
+
+
+    <url>https://github.com/bitquant-initiative/bq/bq-parent-pom</url>
+    <description>BitQuant Parent POM</description>
+
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>https://github.com/bitquant-initiative/bq/LICENSE</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+
+    <scm>
+        <url>https://github.com/bitquant-initiative/bq</url>
+    </scm>
+
+    <developers>
+        <developer>
+            <id>if6was9</id>
+            <name>Rob Schoening</name>
+            <email>robschoening@gmail.com</email>
+        </developer>
+    </developers>
+    <build>
         <plugins>
+            <plugin>
+                <groupId>org.sonatype.central</groupId>
+                <artifactId>central-publishing-maven-plugin</artifactId>
+                <version>0.7.0</version>
+                <extensions>true</extensions>
+                <configuration>
+
+                    <autoPublish>true</autoPublish>
+                    <deploymentName>bq-parent-pom</deploymentName>
+                    <publishingServerId>central</publishingServerId>
+
+
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>3.2.7</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <keyname>CEA3CC9C1CD9650379FE22EE1039EAC2DFA9C202</keyname>
+                    <gpgArguments>
+                        <argument>--pinentry-mode</argument>
+                        <argument>loopback</argument>
+                    </gpgArguments>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>flatten-maven-plugin</artifactId>
