@@ -17,13 +17,13 @@ public class DuckTapeTest extends BaseTest {
   FluentLogger logger = FluentLogger.forEnclosingClass();
 
   public static final String BTC_GITHUB_URL =
-      "https://raw.githubusercontent.com/bitquant-initiative/ducktape/refs/heads/main/btc.csv";
+      "https://raw.githubusercontent.com/bitquant-initiative/bq/bq-ducktape/refs/heads/main/btc.csv";
   public static final String BTC_URL = "file:./btc.csv";
 
   @Test
   public void testRemote() {
 
-    tape().importTable("test", BTC_GITHUB_URL);
+    tape().importTable("test", BTC_URL);
 
     BarSeries bs = tape().getBarSeries("test");
     Bar lastBar = null;

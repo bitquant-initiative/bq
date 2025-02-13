@@ -16,9 +16,9 @@
         <module>bq-ta4j</module>
         <module>bq-duckdb</module>
 
-<!--
-        <module>bq-ducktape</module>
 
+        <module>bq-ducktape</module>
+<!--
         <module>bq-indicators</module>
         <module>bq-sheets</module>
         <module>bq-loader</module>
