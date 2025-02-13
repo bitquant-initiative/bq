@@ -24,7 +24,10 @@
         <module>bq-strategy-engine</module>
 
     </modules>
-
+    <properties>
+        <!-- prevent top-level aggregation project from being deployed -->
+        <maven.deploy.skip>true</maven.deploy.skip>
+    </properties>
     <build>
         <plugins>
             <plugin>
