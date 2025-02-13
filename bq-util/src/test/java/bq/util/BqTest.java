@@ -1,33 +1,28 @@
 package bq.util;
 
+import bq.sql.SqlTemplate;
+import com.google.common.flogger.FluentLogger;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.List;
-
 import org.junit.jupiter.api.AfterEach;
-
-import com.google.common.flogger.FluentLogger;
-
-import bq.sql.SqlTemplate;
-import bq.util.BqException;
 
 public abstract class BqTest {
 
   private static final FluentLogger testLogger = FluentLogger.forEnclosingClass();
   private List<java.lang.AutoCloseable> deferredAutoCloseable = new java.util.ArrayList<>();
 
-
   protected SqlTemplate newTemplate() {
     try {
       Connection c = DriverManager.getConnection("jdbc:duckdb:");
       defer(c);
       return SqlTemplate.create(c);
-    }
-    catch (SQLException e) {
+    } catch (SQLException e) {
       throw new BqException(e);
     }
   }
+
   protected void defer(java.lang.AutoCloseable c) {
     deferredAutoCloseable.add(c);
   }

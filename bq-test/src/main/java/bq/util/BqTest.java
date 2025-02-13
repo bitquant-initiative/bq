@@ -1,30 +1,28 @@
 package bq.util;
 
+import bq.duckdb.DuckDb;
+import com.google.common.flogger.FluentLogger;
 import java.util.List;
 import org.junit.jupiter.api.AfterEach;
-
-import com.google.common.flogger.FluentLogger;
-
-import bq.duckdb.DuckDb;
 
 /**
  * This should be usable for any module that uses bq-ducdb.
  */
-
 public abstract class BqTest {
 
   private static final FluentLogger testLogger = FluentLogger.forEnclosingClass();
   private List<java.lang.AutoCloseable> deferredAutoCloseable = new java.util.ArrayList<>();
 
-  private DuckDb db=null;
-  
+  private DuckDb db = null;
+
   public final DuckDb db() {
     return getDb();
   }
+
   public final DuckDb getDb() {
-    if (db==null) {
-    this. db = DuckDb.createInMemory();
-    defer(db);
+    if (db == null) {
+      this.db = DuckDb.createInMemory();
+      defer(db);
     }
     return db;
   }
@@ -45,7 +43,7 @@ public abstract class BqTest {
       }
     } finally {
       this.deferredAutoCloseable.clear();
-      this.db=null;
+      this.db = null;
     }
   }
 }

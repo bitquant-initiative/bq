@@ -1,18 +1,13 @@
 package bq.util;
 
-import java.util.List;
-
-import org.junit.jupiter.api.AfterEach;
-
 import com.google.common.flogger.FluentLogger;
-
-
+import java.util.List;
+import org.junit.jupiter.api.AfterEach;
 
 public abstract class BaseTest {
 
   private static final FluentLogger testLogger = FluentLogger.forEnclosingClass();
   private List<java.lang.AutoCloseable> deferredAutoCloseable = new java.util.ArrayList<>();
-
 
   protected void defer(java.lang.AutoCloseable c) {
     deferredAutoCloseable.add(c);
