@@ -1,6 +1,7 @@
 #!/bin/bash
 
 set -e
+set -x
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
@@ -10,4 +11,4 @@ if [[ "${CI}" = "true" ]]; then
     MAVEN_OPTS="${MAVEN_OPTS} ${GPG_SKIP_OPT}"
 fi
 
-./mvnw clean install ${MAVEN_OPTS}
+echo ./mvnw clean install ${MAVEN_OPTS}
