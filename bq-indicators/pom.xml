@@ -170,7 +170,6 @@
           <autoPublish>true</autoPublish>
           <deploymentName>bq-indicators</deploymentName>
           <publishingServerId>central</publishingServerId>
-          <tokenAuth>true</tokenAuth>
 
         </configuration>
       </plugin>
