@@ -1,5 +1,5 @@
 package bq.duckdb;
-import org.junit.jupiter.api.Disabled;
+
 import bq.sql.DbException;
 import bq.test.BqTest;
 import bq.util.Zones;
@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.sql.SQLException;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 public class DuckDbTest extends BqTest {

@@ -71,9 +71,8 @@ public abstract class BaseTest {
     // it's very convenient to have charts pop a broswer window open
     // When testing them one-at-a-time, but incredibly annoying when run as a suite.
     Chart.disableBrowser();
-    
   }
-  
+
   @BeforeEach
   private void disableDesktop() {
     this.tape = getDuckTape();

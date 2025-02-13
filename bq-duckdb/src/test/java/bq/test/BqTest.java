@@ -1,34 +1,29 @@
 package bq.test;
 
-import com.google.common.flogger.FluentLogger;
-
 import bq.duckdb.DuckDb;
-
+import com.google.common.flogger.FluentLogger;
 import java.util.List;
-import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-
 
 public abstract class BqTest {
 
   private static final FluentLogger testLogger = FluentLogger.forEnclosingClass();
   private List<java.lang.AutoCloseable> deferredAutoCloseable = new java.util.ArrayList<>();
   private DuckDb db;
-  
-  
+
   public final DuckDb getDb() {
-    if (db!=null) {
+    if (db != null) {
       return db;
     }
     DuckDb db = DuckDb.createInMemory();
-    AutoCloseable c = new AutoCloseable() {
+    AutoCloseable c =
+        new AutoCloseable() {
 
-      @Override
-      public void close() throws Exception {
-        db.close();
-      }
-    };
+          @Override
+          public void close() throws Exception {
+            db.close();
+          }
+        };
     defer(c);
     return db;
   }
@@ -49,7 +44,7 @@ public abstract class BqTest {
       }
     } finally {
       this.deferredAutoCloseable.clear();
-      db=null;
+      db = null;
     }
   }
 }
