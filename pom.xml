@@ -7,6 +7,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.github.bitquant-initiative</groupId>
     <artifactId>bq</artifactId>
+    <name>BitQuant Initiative</name>
     <version>1</version>
     <packaging>pom</packaging>
 
@@ -15,11 +16,9 @@
         <module>bq-util</module>
         <module>bq-ta4j</module>
         <module>bq-duckdb</module>
-
-
         <module>bq-ducktape</module>
-<!--
         <module>bq-indicators</module>
+        <!--
         <module>bq-sheets</module>
         <module>bq-loader</module>
         <module>bq-strategy-engine</module>

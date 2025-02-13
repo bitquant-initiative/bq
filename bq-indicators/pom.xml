@@ -6,9 +6,14 @@
 
   <groupId>io.github.bitquant-initiative</groupId>
   <artifactId>bq-indicators</artifactId>
-  <version>0.2.2</version>
-
   <name>bq-indicators</name>
+
+  <parent>
+    <groupId>io.github.bitquant-initiative</groupId>
+    <artifactId>bq-parent-pom</artifactId>
+    <version>${revision}</version>
+    <relativePath>../bq-parent-pom/pom.xml</relativePath>
+  </parent>
 
   <url>https://github.com/bitquant-initiative/bq-indicators</url>
   <description>BQ Indicators</description>
@@ -42,20 +47,13 @@
   <dependencies>
 
 
-
     <dependency>
       <groupId>io.github.bitquant-initiative</groupId>
-      <artifactId>ducktape</artifactId>
-      <version>0.2.2</version>
+      <artifactId>bq-ducktape</artifactId>
+      <version>${revision}</version>
     </dependency>
 
 
-
-    <dependency>
-      <groupId>com.google.guava</groupId>
-      <artifactId>guava</artifactId>
-      <version>33.4.0-jre</version>
-    </dependency>
 
 
     <dependency>
@@ -105,8 +103,6 @@
       <artifactId>jackson-dataformat-yaml</artifactId>
       <version>2.18.2</version>
     </dependency>
-
-
 
 
     <dependency>
