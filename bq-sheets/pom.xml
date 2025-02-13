@@ -8,7 +8,7 @@
   <artifactId>bq-sheets</artifactId>
   <name>bq-sheets</name>
 
-  <url>https://github.com/bitquant-initiative/bq-sheets</url>
+  <url>https://github.com/bitquant-initiative/bq/tree/main/bq-sheets</url>
   <description>BQ Sheets</description>
 
   <parent>
@@ -27,13 +27,13 @@
   <licenses>
     <license>
       <name>MIT License</name>
-      <url>https://github.com/bitquant-initiative/bq-sheets/LICENSE</url>
+      <url>https://github.com/bitquant-initiative/bq/LICENSE</url>
       <distribution>repo</distribution>
     </license>
   </licenses>
 
   <scm>
-    <url>https://github.com/bitquant-initiative/bq-sheets</url>
+    <url>https://github.com/bitquant-initiative/bq</url>
   </scm>
 
   <developers>
@@ -119,37 +119,9 @@
 
   <build>
     <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-source-plugin</artifactId>
-        <version>3.3.1</version>
-        <executions>
-          <execution>
-            <id>attach-sources</id>
-            <goals>
-              <goal>jar</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
 
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-javadoc-plugin</artifactId>
-        <version>3.11.2</version>
-        <configuration>
-          <doclint>none</doclint>
-        </configuration>
-        <executions>
-          <execution>
-            <id>attach-javadocs</id>
-            <goals>
-              <goal>jar</goal>
-            </goals>
-          </execution>
-        </executions>
 
-      </plugin>
+
       <plugin>
         <groupId>org.sonatype.central</groupId>
         <artifactId>central-publishing-maven-plugin</artifactId>
@@ -163,91 +135,9 @@
 
         </configuration>
       </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-gpg-plugin</artifactId>
-        <version>3.2.7</version>
-        <executions>
-          <execution>
-            <id>sign-artifacts</id>
-            <phase>verify</phase>
-            <goals>
-              <goal>sign</goal>
-            </goals>
-          </execution>
-        </executions>
-        <configuration>
-          <keyname>CEA3CC9C1CD9650379FE22EE1039EAC2DFA9C202</keyname>
-          <gpgArguments>
-            <argument>--pinentry-mode</argument>
-            <argument>loopback</argument>
-          </gpgArguments>
-        </configuration>
-      </plugin>
+      
     </plugins>
-    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to
-      parent pom) -->
-      <plugins>
 
-        <plugin>
-          <groupId>org.codehaus.mojo</groupId>
-          <artifactId>exec-maven-plugin</artifactId>
-          <version>3.5.0</version>
-          <configuration>
-            <mainClass>App</mainClass>
-            <arguments>
-
-            </arguments>
-          </configuration>
-        </plugin>
-        <!-- clean lifecycle, see
-        https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
-        <plugin>
-          <artifactId>maven-clean-plugin</artifactId>
-          <version>3.4.0</version>
-        </plugin>
-        <!-- default lifecycle, jar packaging: see
-        https://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging -->
-        <plugin>
-          <artifactId>maven-resources-plugin</artifactId>
-          <version>3.3.1</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.13.0</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-surefire-plugin</artifactId>
-          <version>3.5.2</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-jar-plugin</artifactId>
-          <version>3.4.2</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-install-plugin</artifactId>
-          <version>3.1.3</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-deploy-plugin</artifactId>
-          <version>3.1.3</version>
-        </plugin>
-
-
-        <!-- site lifecycle, see
-        https://maven.apache.org/ref/current/maven-core/lifecycles.html#site_Lifecycle -->
-        <plugin>
-          <artifactId>maven-site-plugin</artifactId>
-          <version>3.21.0</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-project-info-reports-plugin</artifactId>
-          <version>3.8.0</version>
-        </plugin>
-
-
-      </plugins>
-    </pluginManagement>
   </build>
 
   <dependencyManagement>
@@ -261,13 +151,5 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
-  <!--
-  <distributionManagement>
-    <repository>
-      <id>central</id>
-      <name>Central Repository</name>
-      <url> https://central.sonatype.com/releases</url>
-    </repository>
-  </distributionManagement>
-  -->
+
 </project>
