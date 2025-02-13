@@ -6,12 +6,17 @@
 
   <groupId>io.github.bitquant-initiative</groupId>
   <artifactId>bq-sheets</artifactId>
-  <version>0.2.2</version>
-
   <name>bq-sheets</name>
 
   <url>https://github.com/bitquant-initiative/bq-sheets</url>
   <description>BQ Sheets</description>
+
+  <parent>
+    <groupId>io.github.bitquant-initiative</groupId>
+    <artifactId>bq-parent-pom</artifactId>
+    <version>${revision}</version>
+    <relativePath>../bq-parent-pom/pom.xml</relativePath>
+  </parent>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.release>21</maven.compiler.release>
@@ -44,7 +49,7 @@
     <dependency>
       <groupId>io.github.bitquant-initiative</groupId>
       <artifactId>bq-ta4j</artifactId>
-      <version>0.2.2</version>
+      <version>${project.version}</version>
     </dependency>
 
     <dependency>
@@ -62,17 +67,7 @@
     <artifactId>google-api-client</artifactId>
     <version>2.7.2</version>
 </dependency>
-    <dependency>
-      <groupId>com.google.guava</groupId>
-      <artifactId>guava</artifactId>
-      <version>33.4.0-jre</version>
-    </dependency>
 
-    <dependency>
-      <groupId>org.ta4j</groupId>
-      <artifactId>ta4j-core</artifactId>
-      <version>0.17</version>
-    </dependency>
     <dependency>
       <groupId>com.google.flogger</groupId>
       <artifactId>flogger</artifactId>
