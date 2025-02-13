@@ -9,7 +9,12 @@
     <name>bq-parent-pom</name>
 
     <properties>
-        <revision>0.3.1</revision>
+        <revision>0.3.2</revision>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.release>21</maven.compiler.release>
+        <maven.compiler.source>21</maven.compiler.source>
+
     </properties>
 
 
@@ -36,8 +41,11 @@
             <email>robschoening@gmail.com</email>
         </developer>
     </developers>
+
+
     <build>
         <plugins>
+
             <plugin>
                 <groupId>org.sonatype.central</groupId>
                 <artifactId>central-publishing-maven-plugin</artifactId>
@@ -45,34 +53,29 @@
                 <extensions>true</extensions>
                 <configuration>
 
-                    <autoPublish>true</autoPublish>
-                    <deploymentName>bq-parent-pom</deploymentName>
+                    <autoPublish>false</autoPublish>
+                    <deploymentName>bq-package</deploymentName>
                     <publishingServerId>central</publishingServerId>
 
 
                 </configuration>
             </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-gpg-plugin</artifactId>
-                <version>3.2.7</version>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.3.1</version>
                 <executions>
                     <execution>
-                        <id>sign-artifacts</id>
-                        <phase>verify</phase>
+                        <id>attach-sources</id>
                         <goals>
-                            <goal>sign</goal>
+                            <goal>jar</goal>
                         </goals>
                     </execution>
                 </executions>
-                <configuration>
-                    <keyname>CEA3CC9C1CD9650379FE22EE1039EAC2DFA9C202</keyname>
-                    <gpgArguments>
-                        <argument>--pinentry-mode</argument>
-                        <argument>loopback</argument>
-                    </gpgArguments>
-                </configuration>
             </plugin>
+
+
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>flatten-maven-plugin</artifactId>
@@ -99,45 +102,253 @@
                 </executions>
             </plugin>
 
-                 <plugin>
-        <groupId>com.diffplug.spotless</groupId>
-        <artifactId>spotless-maven-plugin</artifactId>
-        <version>2.44.2</version>
-        <configuration>
+            <plugin>
+                <groupId>com.diffplug.spotless</groupId>
+                <artifactId>spotless-maven-plugin</artifactId>
+                <version>2.44.2</version>
+                <configuration>
 
-          <formats>
-            <!-- you can define as many formats as you want, each is independent -->
-            <format>
-              <!-- define the files to apply to -->
-              <includes>
-                <include>.gitattributes</include>
+                    <formats>
+                        <!-- you can define as many formats as you want, each is independent -->
+                        <format>
+                            <!-- define the files to apply to -->
+                            <includes>
+                                <include>.gitattributes</include>
 
-              </includes>
-              <!-- define the steps to apply to those files -->
-              <trimTrailingWhitespace />
-              <endWithNewline />
-              <indent>
-                <tabs>true</tabs>
-                <spacesPerTab>4</spacesPerTab>
-              </indent>
-            </format>
-          </formats>
-          <!-- define a language-specific format -->
-          <java>
-            <!-- no need to specify files, inferred automatically, but you can if you want -->
+                            </includes>
+                            <!-- define the steps to apply to those files -->
+                            <trimTrailingWhitespace />
+                            <endWithNewline />
+                            <indent>
+                                <tabs>true</tabs>
+                                <spacesPerTab>4</spacesPerTab>
+                            </indent>
+                        </format>
+                    </formats>
+                    <!-- define a language-specific format -->
+                    <java>
+                        <!-- no need to specify files, inferred automatically, but you can if you
+                        want -->
 
-            <!-- apply a specific flavor of google-java-format and reflow long strings -->
-            <googleJavaFormat>
-              <version>1.25.2</version>
+                        <!-- apply a specific flavor of google-java-format and reflow long strings -->
+                        <googleJavaFormat>
+                            <version>1.25.2</version>
 
-              <reflowLongStrings>true</reflowLongStrings>
-              <formatJavadoc>false</formatJavadoc>
-            </googleJavaFormat>
+                            <reflowLongStrings>true</reflowLongStrings>
+                            <formatJavadoc>false</formatJavadoc>
+                        </googleJavaFormat>
 
 
-          </java>
-        </configuration>
-      </plugin>
+                    </java>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.11.2</version>
+                <configuration>
+                    <doclint>none</doclint>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>3.2.7</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <keyname>CEA3CC9C1CD9650379FE22EE1039EAC2DFA9C202</keyname>
+                    <gpgArguments>
+                        <argument>--pinentry-mode</argument>
+                        <argument>loopback</argument>
+                    </gpgArguments>
+                </configuration>
+            </plugin>
         </plugins>
+        <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be
+            moved to
+      parent pom) -->
+            <plugins>
+
+
+                <plugin>
+                    <artifactId>maven-clean-plugin</artifactId>
+                    <version>3.4.0</version>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>3.3.1</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.13.0</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>3.5.2</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>3.4.2</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-install-plugin</artifactId>
+                    <version>3.1.3</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>3.1.3</version>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-site-plugin</artifactId>
+                    <version>3.21.0</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-project-info-reports-plugin</artifactId>
+                    <version>3.8.0</version>
+                </plugin>
+
+
+            </plugins>
+        </pluginManagement>
+
     </build>
+    <dependencies>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.flogger</groupId>
+            <artifactId>flogger-system-backend</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.flogger</groupId>
+            <artifactId>flogger-slf4j-backend</artifactId>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.duckdb</groupId>
+                <artifactId>duckdb_jdbc</artifactId>
+                <version>1.2.0</version>
+            </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>1.5.16</version>
+            </dependency>
+            <dependency>
+                <groupId>org.junit</groupId>
+                <artifactId>junit-bom</artifactId>
+                <version>5.11.4</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.assertj</groupId>
+                <artifactId>assertj-core</artifactId>
+                <version>3.27.3</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.google.flogger</groupId>
+                <artifactId>flogger-slf4j-backend</artifactId>
+                <version>0.8</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.flogger</groupId>
+                <artifactId>flogger-system-backend</artifactId>
+                <version>0.8</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.datatype</groupId>
+                <artifactId>jackson-datatype-jsr310</artifactId>
+                <version>2.18.2</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>2.18.2</version>
+            </dependency>
+          <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>2.18.2</version>
+            </dependency>
+                  <dependency>
+                <groupId>com.fasterxml.jackson.dataformat</groupId>
+                <artifactId>jackson-dataformat-yaml</artifactId>
+                <version>2.18.2</version>
+            </dependency>
+
+            <dependency>
+                <groupId>software.amazon.awssdk</groupId>
+                <artifactId>s3</artifactId>
+                <version>2.30.11</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>33.4.0-jre</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.konghq</groupId>
+                <artifactId>unirest-modules-jackson</artifactId>
+                <version>4.4.5</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.konghq</groupId>
+                <artifactId>unirest-java-core</artifactId>
+                <version>4.4.5</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
 </project>
