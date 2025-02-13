@@ -38,6 +38,22 @@
     </developers>
     <build>
         <plugins>
+
+            <plugin>
+                <groupId>org.sonatype.central</groupId>
+                <artifactId>central-publishing-maven-plugin</artifactId>
+                <version>0.7.0</version>
+                <extensions>true</extensions>
+                <configuration>
+
+                    <autoPublish>false</autoPublish>
+                    <deploymentName>bq-package</deploymentName>
+                    <publishingServerId>central</publishingServerId>
+
+
+                </configuration>
+            </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
