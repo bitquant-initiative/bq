@@ -6,12 +6,20 @@
 
   <groupId>io.github.bitquant-initiative</groupId>
   <artifactId>bq-strategy-engine</artifactId>
-  <version>0.2.2</version>
+
 
   <name>bq-strategy-engine</name>
 
   <url>https://github.com/bitquant-initiative/bq-strategy-engine</url>
   <description>BQ Strategy Engine</description>
+
+  <parent>
+    <groupId>io.github.bitquant-initiative</groupId>
+    <artifactId>bq-parent-pom</artifactId>
+    <version>${revision}</version>
+    <relativePath>../bq-parent-pom/pom.xml</relativePath>
+  </parent>
+
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.release>21</maven.compiler.release>
@@ -41,18 +49,17 @@
 
   <dependencies>
 
-  <dependency>
-    <groupId>io.github.bitquant-initiative</groupId>
-    <artifactId>ducktape</artifactId>
-    <version>0.2.2</version>
-  </dependency>
+    <dependency>
+      <groupId>io.github.bitquant-initiative</groupId>
+      <artifactId>ducktape</artifactId>
+      <version>${revision}</version>
+    </dependency>
 
-  <dependency>
-    <groupId>io.github.bitquant-initiative</groupId>
-    <artifactId>bq-indicators</artifactId>
-    <version>0.2.2</version>
-  </dependency>
-
+    <dependency>
+      <groupId>io.github.bitquant-initiative</groupId>
+      <artifactId>bq-indicators</artifactId>
+      <version>${revision}</version>
+    </dependency>
 
 
     <dependency>
@@ -212,7 +219,7 @@
           <autoPublish>true</autoPublish>
           <deploymentName>bq-strategy-engine</deploymentName>
           <publishingServerId>central</publishingServerId>
-         
+
 
         </configuration>
       </plugin>
