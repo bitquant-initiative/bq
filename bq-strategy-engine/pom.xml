@@ -20,32 +20,9 @@
     <relativePath>../bq-parent-pom/pom.xml</relativePath>
   </parent>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.release>21</maven.compiler.release>
-    <maven.compiler.source>21</maven.compiler.source>
-  </properties>
 
 
-  <licenses>
-    <license>
-      <name>MIT License</name>
-      <url>https://github.com/bitquant-initiative/bq-strategy-engine/LICENSE</url>
-      <distribution>repo</distribution>
-    </license>
-  </licenses>
-
-  <scm>
-    <url>https://github.com/bitquant-initiative/bq-strategy-engine</url>
-  </scm>
-
-  <developers>
-    <developer>
-      <id>if6was9</id>
-      <name>Rob Schoening</name>
-      <email>robschoening@gmail.com</email>
-    </developer>
-  </developers>
+ 
 
   <dependencies>
 

@@ -10,11 +10,7 @@
 
   <url>https://github.com/bitquant-initiative/bq</url>
   <description>BQ DuckDB</description>
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.release>21</maven.compiler.release>
-    <maven.compiler.source>21</maven.compiler.source>
-  </properties>
+
 
   <parent>
     <groupId>io.github.bitquant-initiative</groupId>
@@ -23,25 +19,6 @@
     <relativePath>../bq-parent-pom/pom.xml</relativePath>
   </parent>
 
-  <licenses>
-    <license>
-      <name>MIT License</name>
-      <url>https://github.com/bitquant-initiative/bq/LICENSE</url>
-      <distribution>repo</distribution>
-    </license>
-  </licenses>
-
-  <scm>
-    <url>https://github.com/bitquant-initiative/bq</url>
-  </scm>
-
-  <developers>
-    <developer>
-      <id>if6was9</id>
-      <name>Rob Schoening</name>
-      <email>robschoening@gmail.com</email>
-    </developer>
-  </developers>
 
   <dependencies>
 
