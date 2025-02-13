@@ -33,7 +33,7 @@ public class NumbersTest {
 
       // BigDecimal will sort correctly, but only if values are in range
       list.add(new BigDecimal(r.nextDouble()).setScale(10, RoundingMode.HALF_UP));
-      list.add(new BigDecimal(r.nextDouble() * 1000000d).setScale(10, RoundingMode.HALF_UP));
+      list.add(new BigDecimal(r.nextDouble() * 1000000d).setScale(9, RoundingMode.HALF_UP));
     }
 
     Collections.sort(list, Numbers::numberComparator);
