@@ -6,7 +6,7 @@ if [[ ! -z "${CI}" ]]; then
     MAVEN_OPTS=-B
 fi
 
-./mvnw ${MAVEN_OPTS} clean install 
+../mvnw ${MAVEN_OPTS} clean install 
 mkdir -p target/stage/lib
 
 cp target/lib/*.jar target/stage/lib/
