@@ -6,7 +6,7 @@
     <artifactId>bq-parent-pom</artifactId>
     <version>${revision}</version>
     <packaging>pom</packaging>
-
+    <name>bq-parent-pom</name>
 
     <properties>
         <revision>0.3.1</revision>
