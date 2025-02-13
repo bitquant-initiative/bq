@@ -1,6 +1,7 @@
 package bq.duckdb;
 import org.junit.jupiter.api.Disabled;
 import bq.sql.DbException;
+import bq.test.BqTest;
 import bq.util.Zones;
 import com.google.common.flogger.FluentLogger;
 import java.io.File;
@@ -10,7 +11,7 @@ import java.sql.SQLException;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class DuckDbTest extends BaseTest {
+public class DuckDbTest extends BqTest {
 
   static FluentLogger logger = FluentLogger.forEnclosingClass();
 

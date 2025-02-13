@@ -7,7 +7,7 @@ import java.time.LocalDate;
 import java.util.Set;
 import java.util.function.Supplier;
 
-public class MarketCalendar {
+public class MarketCalendar  {
 
   private static Supplier<Set<LocalDate>> holidayProvider =
       Suppliers.memoize(MarketCalendar::holidays);

@@ -19,7 +19,7 @@ import org.duckdb.DuckDBConnection;
 /**
  * DuckTable is a convenient way to pass around tabular data.
  */
-public class DuckDb {
+public class DuckDb implements AutoCloseable {
 
   static Supplier<DuckDb> supplier = Suppliers.memoize(DuckDb::createInMemory);
   Supplier<DuckConnection> connectionSupplier;

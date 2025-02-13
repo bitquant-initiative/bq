@@ -4,7 +4,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.Test;
 
-public class RecipesTest extends BaseTest {
+import bq.test.BqTest;
+
+public class RecipesTest extends BqTest {
 
   @Test
   public void testCreateSharedInMemory() {

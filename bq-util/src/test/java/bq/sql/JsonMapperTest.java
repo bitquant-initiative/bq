@@ -1,13 +1,15 @@
 package bq.sql;
 
 import bq.sql.mapper.Mappers;
+import bq.util.BqTest;
+
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.JsonNodeType;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class JsonMapperTest extends DbTest {
+public class JsonMapperTest extends BqTest {
 
   @Test
   public void testObjectNode() {
