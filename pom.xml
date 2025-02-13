@@ -10,7 +10,10 @@
     <name>BitQuant Initiative</name>
     <version>1</version>
     <packaging>pom</packaging>
-
+    <properties>
+        <!-- prevent top-level aggregation project from being deployed -->
+        <maven.deploy.skip>true</maven.deploy.skip>
+    </properties>
     <modules>
         <module>bq-parent-pom</module>
         <module>bq-util</module>
