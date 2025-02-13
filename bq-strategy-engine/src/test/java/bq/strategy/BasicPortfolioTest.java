@@ -4,15 +4,16 @@ import bq.ducktape.BarSeriesTable;
 import bq.ducktape.chart.Chart;
 import java.io.File;
 import java.time.DayOfWeek;
+
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
+
 
 public class BasicPortfolioTest extends BaseTest {
 
-  @Test
-  public void testIt() {
 
-    System.out.println(tape);
-  }
 
   @Test
   public void testX() {

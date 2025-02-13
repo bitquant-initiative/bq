@@ -11,7 +11,12 @@ import java.util.concurrent.atomic.AtomicInteger;
 import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public abstract class BaseTest {
 
   static FluentLogger logger = FluentLogger.forEnclosingClass();
@@ -59,6 +64,15 @@ public abstract class BaseTest {
     }
   }
 
+  @Test
+  @Order(-100)
+  public void preventChartFromRenderingViaSuite() {
+    // This prevents charts from rendering when run as part of a suite.
+    // it's very convenient to have charts pop a broswer window open
+    // When testing them one-at-a-time, but incredibly annoying when run as a suite.
+    Chart.disableBrowser();
+  }
+  
   @BeforeEach
   private void disableDesktop() {
     this.tape = getDuckTape();
