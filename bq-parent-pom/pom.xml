@@ -9,7 +9,7 @@
     <name>bq-parent-pom</name>
 
     <properties>
-        <revision>0.3.1</revision>
+        <revision>0.3.2</revision>
     </properties>
 
 
@@ -36,6 +36,9 @@
             <email>robschoening@gmail.com</email>
         </developer>
     </developers>
+
+
+
     <build>
         <plugins>
 
@@ -67,20 +70,7 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>org.sonatype.central</groupId>
-                <artifactId>central-publishing-maven-plugin</artifactId>
-                <version>0.7.0</version>
-                <extensions>true</extensions>
-                <configuration>
-
-                    <autoPublish>true</autoPublish>
-                    <deploymentName>bq-parent-pom</deploymentName>
-                    <publishingServerId>central</publishingServerId>
-
-
-                </configuration>
-            </plugin>
+      
 
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
@@ -236,7 +226,81 @@
 
             </plugins>
         </pluginManagement>
-    </build>
+   
+     </build>
+    <dependencies>
+        <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <scope>test</scope>
+    </dependency>
 
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-params</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.assertj</groupId>
+      <artifactId>assertj-core</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+          <groupId>com.google.flogger</groupId>
+      <artifactId>flogger-system-backend</artifactId>
+      <scope>compile</scope>
+      </dependency>
+          <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+      <version>1.5.16</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.google.flogger</groupId>
+      <artifactId>flogger-slf4j-backend</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    </dependencies>
+
+
+  <dependencyManagement>
+    <dependencies>
+    <dependency>
+      <groupId>org.duckdb</groupId>
+      <artifactId>duckdb_jdbc</artifactId>
+      <version>1.2</version>
+      </dependency>
+           <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+      <version>1.5.16</version>
+      </dependency>
+      <dependency>
+        <groupId>org.junit</groupId>
+        <artifactId>junit-bom</artifactId>
+        <version>5.11.4</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+     <dependency>
+      <groupId>org.assertj</groupId>
+      <artifactId>assertj-core</artifactId>
+      <version>3.27.3</version>
+      <scope>test</scope>
+      </dependency>
+    <dependency>
+          <groupId>com.google.flogger</groupId>
+      <artifactId>flogger-slf4j-backend</artifactId>
+      <version>0.8</version>
+      </dependency>
+          <dependency>
+          <groupId>com.google.flogger</groupId>
+      <artifactId>flogger-system-backend</artifactId>
+      <version>0.8</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 
 </project>
