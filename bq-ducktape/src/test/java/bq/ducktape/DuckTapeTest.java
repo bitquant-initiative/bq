@@ -95,7 +95,7 @@ public class DuckTapeTest extends BaseTest {
       Num indicatorVal = openIndicator.getValue(i);
       Num barVal = bs.getBar(i).getOpenPrice();
 
-      logger.atInfo().log("bar val=%s indicator=%s", barVal, indicatorVal);
+      logger.atFiner().log("bar val=%s indicator=%s", barVal, indicatorVal);
       if (barVal == null) {
         // if the open price on the bar is null, the indicator should be as well
         Assertions.assertThat(indicatorVal).isNull();
