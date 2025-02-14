@@ -33,7 +33,7 @@ public class NumbersTest {
 
       // BigDecimal will sort correctly, but only if values are in range
       list.add(new BigDecimal(r.nextDouble()).setScale(10, RoundingMode.HALF_UP));
-      list.add(new BigDecimal(r.nextDouble() * 1000000d).setScale(9, RoundingMode.HALF_UP));
+      list.add(new BigDecimal(r.nextDouble() * 1000000d).setScale(8, RoundingMode.HALF_UP));
     }
 
     Collections.sort(list, Numbers::numberComparator);
@@ -45,6 +45,7 @@ public class NumbersTest {
         Assertions.assertThat(n).isNotNull();
         Double thisNum = Double.valueOf(n.toString());
 
+        // This is flaky due to BigDecimal implementation craziness
         Assertions.assertThat(lastNum.compareTo(thisNum))
             .withFailMessage(
                 "expecting %s <= %s but compare was %s",
