@@ -30,15 +30,23 @@
       <version>${revision}</version>
     </dependency>
 
+
+    <!-- 
+The following MUST be explicitly included for an app:
+
+flogger-slf4j-backend
+logback-classic
+
+-->
+    <dependency>
+      <groupId>com.google.flogger</groupId>
+      <artifactId>flogger-slf4j-backend</artifactId>
+      <scope>compile</scope>
+    </dependency>
     <dependency>
       <groupId>ch.qos.logback</groupId>
       <artifactId>logback-classic</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>jcl-over-slf4j</artifactId>
-      <version>2.0.16</version>
+      <scope>compile</scope>
     </dependency>
 
 
