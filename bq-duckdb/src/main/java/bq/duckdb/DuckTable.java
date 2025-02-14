@@ -2,10 +2,18 @@ package bq.duckdb;
 
 import static bq.util.S.isNotBlank;
 
-import bq.sql.DbException;
-import bq.sql.TablePrinter;
-import bq.util.BqException;
-import bq.util.S;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.sql.SQLException;
+import java.util.Collection;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+import org.duckdb.DuckDBAppender;
+import org.duckdb.DuckDBConnection;
+
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
@@ -15,16 +23,11 @@ import com.google.common.flogger.FluentLogger.Api;
 import com.google.common.io.ByteSink;
 import com.google.common.io.ByteSource;
 import com.google.common.io.Files;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.sql.SQLException;
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
-import org.duckdb.DuckDBAppender;
-import org.duckdb.DuckDBConnection;
+
+import bq.sql.DbException;
+import bq.sql.ResultSetTextFormatter;
+import bq.util.BqException;
+import bq.util.S;
 
 public class DuckTable {
 
@@ -195,7 +198,7 @@ public class DuckTable {
               c.sql("select * from " + getTableName());
             },
             rs -> {
-              return TablePrinter.create().toString(rs.getResultSet());
+              return new ResultSetTextFormatter().toString(rs.getResultSet());
             });
   }
 

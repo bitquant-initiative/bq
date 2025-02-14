@@ -39,7 +39,7 @@ public class QueryPrinter implements Query {
 
           @Override
           public String process(Results rs) throws SQLException {
-            String s = TablePrinter.create().toString(rs.getResultSet());
+            String s = new ResultSetTextFormatter().process(rs);
             print(s);
             return s;
           }

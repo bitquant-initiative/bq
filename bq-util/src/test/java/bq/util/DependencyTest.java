@@ -59,7 +59,7 @@ public class DependencyTest {
 
     jd.forEach(
         dep -> {
-          if (!Set.of("bq-parent-pom","bq-util", "bq-test").contains(module)) {
+          if (!Set.of("bq-parent-pom", "bq-util", "bq-test").contains(module)) {
             checkNotArtifact(pom, dep, "flogger");
             checkNotArtifact(pom, dep, "flogger-system-backend");
             checkNotArtifact(pom, dep, "slf4j-api");
