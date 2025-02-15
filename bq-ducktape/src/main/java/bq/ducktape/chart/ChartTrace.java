@@ -210,8 +210,11 @@ public class ChartTrace {
       String dt = b.getBeginTime().toLocalDate().toString();
       Num num = indicator.getValue(i);
 
-      if (num != null && !num.isNaN()) d.add(dt);
-      p.add(num.doubleValue());
+      if (num != null && !num.isNaN()) {
+        d.add(dt);
+        p.add(num.doubleValue());
+      }
+  
     }
 
     traceJson.put("mode", "lines");
