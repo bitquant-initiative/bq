@@ -10,6 +10,7 @@ import org.ta4j.core.Bar;
 import org.ta4j.core.BarSeries;
 import org.ta4j.core.Indicator;
 import org.ta4j.core.num.DoubleNum;
+import org.ta4j.core.num.NaN;
 import org.ta4j.core.num.Num;
 
 public class DuckDateIndicator implements Indicator<Num> {
@@ -40,7 +41,7 @@ public class DuckDateIndicator implements Indicator<Num> {
 
     Bar b = barSeries.getBar(index);
     if (b == null) {
-      return null;
+      return NaN.NaN;
     }
     if (vals == null) {
       beforeSelect();
@@ -50,8 +51,8 @@ public class DuckDateIndicator implements Indicator<Num> {
 
     Preconditions.checkNotNull(vals);
     Optional<Num> val = vals.get(d);
-    if (val.isEmpty()) {
-      return null;
+    if (val == null || val.isEmpty()) {
+      return NaN.NaN;
     }
     return val.get();
   }
