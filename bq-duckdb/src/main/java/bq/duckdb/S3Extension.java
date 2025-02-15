@@ -27,7 +27,7 @@ public class S3Extension {
           CREATE SECRET ducktape_aws_secret (
               TYPE S3,
               PROVIDER CREDENTIAL_CHAIN
-          )\
+          )
           """;
 
       duck.template().execute(sql);
