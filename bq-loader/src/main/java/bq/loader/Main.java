@@ -5,6 +5,7 @@ package bq.loader;
 
 import bq.duckdb.DuckDb;
 import bq.util.Config;
+import bq.util.ProjectConfig;
 import bq.util.S;
 import com.google.common.flogger.FluentLogger;
 import java.io.File;
@@ -23,7 +24,7 @@ public class Main {
       f = f.getAbsoluteFile();
     }
     logger.atInfo().log("WORKDIR         : %s", f);
-    logger.atInfo().log("S3_BUCKET       : %s", S3Config.getBucket());
+    logger.atInfo().log("BQ_S3_BUCKET       : %s", ProjectConfig.get().getS3Bucket());
 
     do {
       new MultiLoadTask(db).symbols(Config.get("SYMBOLS").orElse(null)).execute();

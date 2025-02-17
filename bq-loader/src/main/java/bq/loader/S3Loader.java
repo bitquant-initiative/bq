@@ -1,14 +1,14 @@
 package bq.loader;
 
-import static bq.loader.S3Config.getClient;
-
 import bq.duckdb.DuckDb;
 import bq.ducktape.BarSeriesTable;
 import bq.ducktape.DuckTape;
+import bq.util.ProjectConfig;
 import bq.util.S;
 import bq.util.Symbol;
 import bq.util.ta4j.ImmutableBarSeries;
 import com.google.common.base.Splitter;
+import com.google.common.base.Suppliers;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.flogger.FluentLogger;
@@ -18,8 +18,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.function.Supplier;
 import org.ta4j.core.BarSeries;
 import software.amazon.awssdk.core.sync.RequestBody;
+import software.amazon.awssdk.regions.Region;
+import software.amazon.awssdk.services.s3.S3Client;
 import software.amazon.awssdk.services.s3.model.GetObjectAttributesResponse;
 import software.amazon.awssdk.services.s3.model.ListObjectsV2Response;
 import software.amazon.awssdk.services.s3.model.NoSuchKeyException;
@@ -32,6 +35,8 @@ public class S3Loader extends Loader<S3Loader> {
   static Map<String, Boolean> s3AvailabilityMap = Maps.newHashMap();
 
   String bucket;
+
+  static final Supplier<S3Client> supplier = Suppliers.memoize(S3Loader::createClient);
 
   public S3Loader(DuckDb d) {
     super(d);
@@ -72,7 +77,7 @@ public class S3Loader extends Loader<S3Loader> {
     if (S.isNotBlank(bucket)) {
       return bucket;
     }
-    return S3Config.getBucket();
+    return ProjectConfig.get().getS3Bucket();
   }
 
   String getS3UrlForSymbol() {
@@ -82,7 +87,7 @@ public class S3Loader extends Loader<S3Loader> {
   boolean s3FileExists() {
     try {
       GetObjectAttributesResponse r =
-          S3Config.getClient()
+          getClient()
               .getObjectAttributes(
                   c -> {
                     c.bucket(getBucket());
@@ -207,7 +212,7 @@ public class S3Loader extends Loader<S3Loader> {
       response =
           s3.listObjectsV2(
               c -> {
-                c.bucket(S3Config.getBucket());
+                c.bucket(ProjectConfig.get().getS3Bucket());
                 c.continuationToken(token.get());
               });
       list.addAll(response.contents());
@@ -302,5 +307,14 @@ public class S3Loader extends Loader<S3Loader> {
           }
         };
     return x;
+  }
+
+  public static S3Client getClient() {
+    return supplier.get();
+  }
+
+  private static S3Client createClient() {
+
+    return S3Client.builder().region(Region.of(ProjectConfig.get().getS3BucketRegion())).build();
   }
 }

@@ -1,10 +1,10 @@
 package bq.options.model.jm;
 
-//references: 
-//http://mathworld.wolfram.com/NormalDistribution.html
-//http://mathworld.wolfram.com/RegularizedGammaFunction.html
-//http://mathworld.wolfram.com/Erf.html
-//https://introcs.cs.princeton.edu/java/21function/ErrorFunction.java.html
+// references:
+// http://mathworld.wolfram.com/NormalDistribution.html
+// http://mathworld.wolfram.com/RegularizedGammaFunction.html
+// http://mathworld.wolfram.com/Erf.html
+// https://introcs.cs.princeton.edu/java/21function/ErrorFunction.java.html
 
 class NormalDistribution {
   private static final double TOO_MANY_DEVIATIONS = 8d; // Apache commons Math uses 40.
@@ -51,13 +51,32 @@ class NormalDistribution {
     double t = 1.0 / (1.0 + 0.5 * Math.abs(z));
 
     // use Horner's method
-    double ans = 1
-        - t * Math.exp(-z * z - 1.26551223 + t * (1.00002368 + t * (0.37409196 + t * (0.09678418 + t * (-0.18628806
-            + t * (0.27886807 + t * (-1.13520398 + t * (1.48851587 + t * (-0.82215223 + t * (0.17087277))))))))));
-    if (z >= 0)
-      return ans;
-    else
-      return -ans;
+    double ans =
+        1
+            - t
+                * Math.exp(
+                    -z * z
+                        - 1.26551223
+                        + t
+                            * (1.00002368
+                                + t
+                                    * (0.37409196
+                                        + t
+                                            * (0.09678418
+                                                + t
+                                                    * (-0.18628806
+                                                        + t
+                                                            * (0.27886807
+                                                                + t
+                                                                    * (-1.13520398
+                                                                        + t
+                                                                            * (1.48851587
+                                                                                + t
+                                                                                    * (-0.82215223
+                                                                                        + t
+                                                                                            * (0.17087277))))))))));
+    if (z >= 0) return ans;
+    else return -ans;
   }
 
   public double getMean() {
@@ -68,13 +87,12 @@ class NormalDistribution {
     return standardDeviation;
   }
 
-// static calculations for the standard normal - helps reduce object creation
+  // static calculations for the standard normal - helps reduce object creation
   public static class StandardNormal {
     private static final NormalDistribution STD_NORM = new NormalDistribution();
 
     // cannot instantiate
-    private StandardNormal() {
-    }
+    private StandardNormal() {}
 
     public static double getMean() {
       return STD_NORM.getMean();
@@ -96,5 +114,4 @@ class NormalDistribution {
       return STD_NORM.cdf(((x - mean) / standardDeviation));
     }
   }
-
 }
