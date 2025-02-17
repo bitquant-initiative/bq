@@ -19,6 +19,7 @@
         <module>bq-test</module>
         <module>bq-ducktape</module>
         <module>bq-indicators</module>
+        <module>bq-options</module>
         <module>bq-sheets</module>
         <module>bq-loader</module>
         <module>bq-strategy-engine</module>
