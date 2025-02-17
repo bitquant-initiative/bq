@@ -214,7 +214,6 @@ public class ChartTrace {
         d.add(dt);
         p.add(num.doubleValue());
       }
-  
     }
 
     traceJson.put("mode", "lines");

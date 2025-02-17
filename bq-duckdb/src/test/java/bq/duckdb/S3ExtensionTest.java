@@ -1,5 +1,6 @@
 package bq.duckdb;
 
+import bq.util.ProjectConfig;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -35,7 +36,10 @@ public class S3ExtensionTest {
             });
 
     d.template()
-        .execute("COPY test TO 's3://test.bitquant.cloud/test/output.csv' (HEADER, DELIMITER ',')");
+        .execute(
+            "COPY test TO 's3://"
+                + ProjectConfig.get().getS3Bucket()
+                + "/test/output.csv' (HEADER, DELIMITER ',')");
 
     var x =
         d.template()

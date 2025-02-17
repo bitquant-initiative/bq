@@ -24,14 +24,17 @@ public class YAxis {
     config().put("type", "log");
     return this;
   }
+
   public YAxis title(String s) {
     config().put("title", s);
     return this;
   }
+
   public YAxis grid(boolean b) {
     config().put("showgrid", b);
     return this;
   }
+
   public YAxis linearScale() {
     config().put("type", "linear");
     return this;

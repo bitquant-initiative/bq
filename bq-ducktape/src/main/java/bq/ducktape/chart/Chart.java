@@ -205,7 +205,9 @@ public class Chart {
     pw.println(JSUtil.toVariableDeclaration(getConfigVar(), config));
 
     pw.println(
-        String.format("Plotly.newPlot(%s,%s,%s,%s);", getDivVar(), getDataVar(), getLayoutVar(), getConfigVar()));
+        String.format(
+            "Plotly.newPlot(%s,%s,%s,%s);",
+            getDivVar(), getDataVar(), getLayoutVar(), getConfigVar()));
     pw.println("");
     pw.flush();
   }
