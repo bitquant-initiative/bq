@@ -10,6 +10,7 @@ cat <<EOF
 EOF
 
 aws sts get-caller-identity
+aws s3 ls
 
 
 cat <<EOF
