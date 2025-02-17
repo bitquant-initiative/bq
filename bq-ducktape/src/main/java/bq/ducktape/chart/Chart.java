@@ -7,9 +7,11 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.google.common.flogger.FluentLogger;
+import com.google.common.io.Closer;
 import com.google.common.io.Files;
 import java.awt.Desktop;
 import java.awt.GraphicsEnvironment;
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -31,6 +33,32 @@ public class Chart {
   static FluentLogger logger = FluentLogger.forEnclosingClass();
 
   static AtomicBoolean desktopDisabled = new AtomicBoolean(false);
+
+  boolean scopedVariables = false;
+
+  public String getDivVar() {
+    return chartDiv.replace("-", "_");
+  }
+
+  private String toScopedVar(String name) {
+    if (scopedVariables) {
+      return String.format("%s_%s", getDivVar(), name);
+    } else {
+      return name;
+    }
+  }
+
+  private String getLayoutVar() {
+    return toScopedVar("layout");
+  }
+
+  private String getConfigVar() {
+    return toScopedVar("config");
+  }
+
+  private String getDataVar() {
+    return toScopedVar("data");
+  }
 
   public Optional<ChartTrace> getTrace(String name) {
 
@@ -114,8 +142,8 @@ public class Chart {
     layout.set("xaxis", xAxis);
     layout.set("yaxis", yAxis);
 
-    width(750);
-    height(400);
+    // width(750);
+    // height(400);
 
     xAxis.put("title", "");
     yAxis.put("title", "");
@@ -146,13 +174,43 @@ public class Chart {
     return this;
   }
 
+  public Chart targetDiv(String div) {
+    this.chartDiv = div;
+    return this;
+  }
+
   public String toHtml() {
     StringWriter sw = new StringWriter();
-    renderHtml(sw);
+    writeHtml(sw);
     return sw.toString();
   }
 
-  public void renderHtml(Writer w) {
+  public String toJavaScript() {
+    StringWriter sw = new StringWriter();
+    writeJavaScript(sw);
+    return sw.toString();
+  }
+
+  public Chart scopedVariables(boolean b) {
+    this.scopedVariables = b;
+    return this;
+  }
+
+  public void writeJavaScript(Writer w) {
+    PrintWriter pw = new PrintWriter(w);
+    pw.println("var " + getDivVar() + " = document.getElementById('" + chartDiv + "');");
+
+    pw.println(JSUtil.toVariableDeclaration(getLayoutVar(), layout));
+    pw.println(JSUtil.toVariableDeclaration(getDataVar(), data));
+    pw.println(JSUtil.toVariableDeclaration(getConfigVar(), config));
+
+    pw.println(
+        String.format("Plotly.newPlot(%s,%s,%s,%s);", getDivVar(), getDataVar(), getLayoutVar(), getConfigVar()));
+    pw.println("");
+    pw.flush();
+  }
+
+  public void writeHtml(Writer w) {
 
     PrintWriter pw = new PrintWriter(w);
     pw.println("<!DOCTYPE html>");
@@ -169,27 +227,27 @@ public class Chart {
 
     pw.println("<script>");
 
-    pw.println("var chartDiv = document.getElementById('" + chartDiv + "');");
-
-    pw.println(JSUtil.toVariableDeclaration("layout", layout));
-    pw.println(JSUtil.toVariableDeclaration("data", data));
-    pw.println(JSUtil.toVariableDeclaration("config", config));
-
-    pw.println("Plotly.newPlot(chartDiv,data,layout,config);");
-    pw.println("");
+    pw.flush();
+    writeJavaScript(w);
     pw.println("</script>");
     pw.println("</body></html>");
 
     pw.flush();
   }
 
-  public void view() {
+  public void writeJavaScript(File f) {
+    try (Closer closer = Closer.create()) {
+      Writer w = Files.asCharSink(f, StandardCharsets.UTF_8).openStream();
+      closer.register(w);
+      writeJavaScript(w);
+      w.flush();
+    } catch (IOException e) {
+      throw new BqException(e);
+    }
+  }
 
+  public void view(File f) {
     try {
-      Path p = java.nio.file.Files.createTempFile("chart_", ".html");
-
-      Files.asCharSink(p.toFile(), StandardCharsets.UTF_8).write(toHtml());
-
       if (desktopDisabled.get()) {
         logger.atWarning().log("opening Charts in browser has been disabled");
         return;
@@ -199,8 +257,24 @@ public class Chart {
         return;
       }
 
-      logger.atInfo().log("opening %s", p);
-      Desktop.getDesktop().open(p.toFile());
+      logger.atInfo().log("opening %s", f);
+      Desktop.getDesktop().open(f);
+    } catch (IOException e) {
+      throw new BqException(e);
+    }
+  }
+
+  public void view() {
+
+    try (Closer closer = Closer.create()) {
+      Path p = java.nio.file.Files.createTempFile("chart_", ".html");
+
+      Writer w = Files.asCharSink(p.toFile(), StandardCharsets.UTF_8).openStream();
+      closer.register(w);
+      writeHtml(w);
+      w.close();
+
+      view(p.toFile());
 
     } catch (IOException e) {
       throw new BqException(e);
