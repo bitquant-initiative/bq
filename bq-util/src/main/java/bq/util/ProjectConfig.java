@@ -19,6 +19,6 @@ public class ProjectConfig {
   }
 
   public String getS3BucketRegion() {
-    return Config.get("BQ_S3_BUCKET").orElse(DEFAULT_BQ_S3_BUCKET_REGION);
+    return Config.get("BQ_S3_BUCKET_REGION").orElse(DEFAULT_BQ_S3_BUCKET_REGION);
   }
 }
