@@ -53,7 +53,7 @@
                 <extensions>true</extensions>
                 <configuration>
 
-                    <autoPublish>false</autoPublish>
+                    <autoPublish>true</autoPublish>
                     <deploymentName>bq-package</deploymentName>
                     <publishingServerId>central</publishingServerId>
 
