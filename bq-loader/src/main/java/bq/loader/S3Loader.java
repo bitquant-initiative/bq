@@ -31,7 +31,7 @@ import software.amazon.awssdk.services.s3.model.S3Object;
 
 public class S3Loader extends Loader<S3Loader> {
 
-  FluentLogger logger = FluentLogger.forEnclosingClass();
+  static FluentLogger logger = FluentLogger.forEnclosingClass();
   static Map<String, Boolean> s3AvailabilityMap = Maps.newHashMap();
 
   String bucket;
@@ -315,6 +315,8 @@ public class S3Loader extends Loader<S3Loader> {
 
   private static S3Client createClient() {
 
-    return S3Client.builder().region(Region.of(ProjectConfig.get().getS3BucketRegion())).build();
+    Region region = Region.of(ProjectConfig.get().getS3BucketRegion());
+    logger.atInfo().log("region: %s",region);
+    return S3Client.builder().region(region).build();
   }
 }

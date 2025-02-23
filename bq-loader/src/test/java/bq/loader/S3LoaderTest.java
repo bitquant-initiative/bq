@@ -3,6 +3,8 @@ package bq.loader;
 import bq.loader.polygon.PolygonDataProvider;
 import bq.util.Symbol;
 import bq.util.ta4j.Bars;
+import software.amazon.awssdk.regions.Region;
+
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.ta4j.core.BarSeries;
@@ -17,6 +19,8 @@ public class S3LoaderTest extends LoaderTest {
     Assertions.assertThat(S3Loader.s3Key(Symbol.parse("Q:BTC.MVRVZ")))
         .isEqualTo("indicators/1d/BTC.MVRVZ.csv");
   }
+
+  
 
   @Test
   public void testRead() {
