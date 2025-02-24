@@ -21,6 +21,7 @@
         <module>bq-indicators</module>
         <module>bq-options</module>
         <module>bq-sheets</module>
+        <module>bq-openai</module>
         <module>bq-loader</module>
         <module>bq-strategy-engine</module>
 
