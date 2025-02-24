@@ -17,6 +17,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+
     - name: Set up JDK 21
       uses: actions/setup-java@v4
       with:
@@ -25,6 +26,11 @@ jobs:
         cache: 'maven'
         server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
         settings-path: ${{ github.workspace }} # location for the settings.xml file
+  
+    - name: Restore Maven cache
+      uses: skjolber/maven-cache-github-action@v3.1.1
+      with:
+        step: restore
 
     - name: Build 
       run: ./build.sh
@@ -35,5 +41,8 @@ jobs:
         BQ_S3_BUCKET: test.bitquant.cloud
         POLYGON_API_KEY: ${{ secrets.POLYGON_API_KEY }}
         
-
+    - name: Save Maven cache
+      uses: skjolber/maven-cache-github-action@v3.1.1
+      with:
+        step: save
 
