@@ -53,7 +53,7 @@ logback-classic
     <dependency>
       <groupId>de.siegmar</groupId>
       <artifactId>fastcsv</artifactId>
-      <version>3.5.0</version>
+      <version>3.6.0</version>
     </dependency>
 
     <dependency>
